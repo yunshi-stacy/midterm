@@ -33,12 +33,8 @@ These screenshots demonstate the functionality of the application. You do not
 need to use this exact layout or style—feel free to make it look however you
 want, as long as the functionality is the same.
 
-!(/images/midterm-demo-streets1.png)
-
-!(/images/midterm-demo-streets2.png)
-
-!(/images/midterm-demo-streets3.png)
-
-!(/images/midterm-demo-streets4.png)
-
-!(/images/midterm-demo-streets5.png)
+![Midterm Application, Screen 1](/images/midterm-demo-streets1.png)
+![Midterm Application, Screen 2](/images/midterm-demo-streets2.png)
+![Midterm Application, Screen 3](/images/midterm-demo-streets3.png)
+![Midterm Application, Screen 4](/images/midterm-demo-streets4.png)
+![Midterm Application, Screen 5](/images/midterm-demo-streets5.png)
