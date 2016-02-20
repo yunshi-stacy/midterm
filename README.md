@@ -36,10 +36,4 @@ to represent the functionality of the story map. Feel free to use your own
 layout, color, and other styles, as long as the functionality is the same.
 Your story map will use a different dataset.
 
-Below are individual screenshots from that prototype.
-
-![Midterm Application, Screen 1](/images/midterm-demo-streets1.png)
-![Midterm Application, Screen 2](/images/midterm-demo-streets2.png)
-![Midterm Application, Screen 3](/images/midterm-demo-streets3.png)
-![Midterm Application, Screen 4](/images/midterm-demo-streets4.png)
-![Midterm Application, Screen 5](/images/midterm-demo-streets5.png)
+Alternatively, see [individual screenshots](/images/).
