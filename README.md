@@ -27,11 +27,16 @@ The midterm should be a new repository that you create on your personal github
 account. Create a new repository on GitHub.com and then clone it to your local
 machine using GitHub Desktop.
 
-## Demo
+## Prototype
 
-These screenshots demonstate the functionality of the application. You do not
-need to use this exact layout or style—feel free to make it look however you
-want, as long as the functionality is the same.
+To see a visual representation of how the story map should work, take a look 
+at this [clickable prototype](https://marvelapp.com/bf2c9h) that uses 
+[Marvel](http://marvelapp.com). Please note that this prototype is only meant 
+to represent the functionality of the story map. Feel free to use your own
+layout, color, and other styles, as long as the functionality is the same.
+Your story map will use a different dataset.
+
+Below are individual screenshots from that prototype.
 
 ![Midterm Application, Screen 1](/images/midterm-demo-streets1.png)
 ![Midterm Application, Screen 2](/images/midterm-demo-streets2.png)
