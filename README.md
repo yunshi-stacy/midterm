@@ -2,7 +2,7 @@
 
 ## Project Outline
 
-For your midterm project, you will create a story map application for a dataset
+The midterm is due on March 6. For your midterm project, you will create a story map application for a dataset
 of your choosing. A story map tells a story through several slides, each slide
 combining text and data. The user is able to move forward and backwards through
 the slides by clicking on next and previous buttons.
