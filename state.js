@@ -17,20 +17,27 @@ var state = {
   'part': [1,0,2,4],
   'searchRadius': 0,
   'toggler': {},
-  'popup':{},
+  'popup': [],
   'clickPoint': [],
   'nearestPoint': [],
   'connectedLine':[],
   'nearNumber': 0,
   'layerNames': ['routes', 'connectedLine', 'racks', 'bikeshare', 'stops', 'animatePoint', 'clickPoint', 'nearestPoint', 'bufferZone'],
   'msg': {
-    "1": 'Rumors say that this is the longest bus route in Philly.',
-    "2": 'Move your mouse to each station and get the stop name.<br><br>Type a distance to see if there is any bike racks within this distance from each stops.',
-    "3": 'Do you find your favorite bike racks location?<br><br>Please type a distance again or remain the same to see the Indigo bikeshare stations within that distance',
+    "0": "Guess which one is the longest bus route in Philly? <br><br>Click 'next' to continue.",
+    "1": 'Rumors say that <strong>THIS</strong> is the longest bus route in Philly.',
+    "2": "Move your mouse to each station and get the stop name.<br><br><em>Type a distance to see if there is any bike racks within this distance from each stops.</em>",
+    "3": 'Do you find your favorite bike racks location?<br><br><em>Please type a distance again or remain the same to see the Indigo bikeshare stations within that distance.</em>',
     "4": 'Similar, but now we get the Indigo bikeshare stations instead.',
-    "5": '- Write a number.<br>- Click on the map.<br><br>We will calculate the average distance of the nearest stops for you.'
+    "5": 'Want to know the average distance of the nearest No.23 bus stops near you? <br>- Write the number of bus stops you wan to include! <br>- Click on the map!'
   }
 };
+
+
+
+$("#msg").html(state.msg[state.slideNumber]);
+
+$('button#prev').hide();
 
 $('#formRadius').hide();
 $('#formNumber').hide();
@@ -115,7 +122,7 @@ map.on("load",function(){
     "type": "fill",
     "source": "bufferZone",
     "paint": {
-      "fill-color": "#80cdbb",
+      "fill-color": "#2190be",
       "fill-opacity": 0.05
     },
     "layout": {

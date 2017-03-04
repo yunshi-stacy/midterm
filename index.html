@@ -35,60 +35,70 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="row clearfix">
+
 			<div class="col-md-3 column">
-				<h3>
-					Bus Route 23
-				</h3>
-				<p id = "msg" style="font-size: larger"></p>
-				<br>
-				<form class="navbar-form navbar-left" role="search" id="formRadius">
-					<p style="font-size: 1.3rem">Search Radius: <br><em style="font-size: smaller">(Unit: Mile)</em></p>
-					<div class="form-group">
-						<input type="number" class="form-control" id="searchRadius" value="0.25"/>
-					</div>
-				</form>
+				<div class="row clearfix">
+					<div class="col-md-12 column">
+						<h3>
+							Bus Route 23
+						</h3>
+						<p id = "msg" style="font-size: larger"></p>
+						<br>
+						<form class="navbar-form navbar-left" role="search" id="formRadius">
+							<p style="font-size: 1.3rem">Search Radius: <br><em style="font-size: smaller">(Unit: Mile)</em></p>
+							<div class="form-group">
+								<input type="number" class="form-control" id="searchRadius" value="0.25"/>
+							</div>
+						</form>
 
-				<form class="navbar-form navbar-left" role="search" id="formNumber">
-					<p style="font-size: 1.3rem">Number of the Nearest Stops: </p>
-					<div class="form-group">
-						<input type="number" class="form-control" id="nearNumber" value="1"/>
-					</div>
-				</form>
+						<form class="navbar-form navbar-left" role="search" id="formNumber">
+							<p style="font-size: 1.3rem">Number of the Nearest Stops: </p>
+							<div class="form-group">
+								<input type="number" class="form-control" id="nearNumber" value="1"/>
+							</div>
+						</form>
 
-				<div class="btn-group btn-group-md" style="margin-top: 5rem">
-					<button class="btn btn-default" type="button" id='prev'>Prev</button><button class="btn btn-default" type="button" id='next'>Next</button>
+					</div>
 				</div>
 			</div>
 			<div class="col-md-9 column">
 
 				<div id='map'></div>
+			</div>
+		</div>
+		<div class="row clearfix" id="buttonGroup">
+			<div class="col-md-2 column">
+				<button type="button" class="btn btn-default" id="prev">Prev</button>
+			</div>
+			<div class="col-md-2 column"></div>
 
+			<div class="col-md-2 column">
+				<button type="button" class="btn btn-default" id="next">Next</button>
 			</div>
+			<div class="col-md-6 column"></div>
+
 		</div>
-		<div class="row clearfix">
-			<div class="col-md-12 column">
-				<blockquote>
-					<small><cite>Yun Shi, Feb. 2017</cite></small>
-				</blockquote>
-				<grammarly>
-					<div class="_e725ae-textarea_btn _e725ae-not_focused">
-						<div class="_e725ae-transform_wrap">
-							<div class="_e725ae-status">
-							</div>
-						</div>
+		<grammarly>
+			<div class="_e725ae-textarea_btn _e725ae-not_focused">
+				<div class="_e725ae-transform_wrap">
+					<div class="_e725ae-status">
 					</div>
-				</grammarly>
+				</div>
 			</div>
-		</div>
+		</grammarly>
 	</div>
-	<!-- End HTML -->
-	<!-- Start Javascript Imports -->
-	<link rel="stylesheet" href="css/style.css" />
-	<script src="state.js"></script>
-	<script src="function.js"></script>
-	<script src="slideModel.js"></script>
-	<!-- End Javascript Imports -->
+</div>
+
+</div>
+<!-- End HTML -->
+<!-- Start Javascript Imports -->
+<link rel="stylesheet" href="css/style.css" />
+<script src="state.js"></script>
+<script src="function.js"></script>
+<script src="slideModel.js"></script>
+<!-- End Javascript Imports -->
 
 </body>
 </html>

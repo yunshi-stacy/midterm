@@ -23,7 +23,9 @@ var eachSlide = function(){
     case 1:
     i=-1;
     j=0;
-    $('button').prop("disabled", true);
+    _.each(['button#next', 'button#prev'], function(datum){
+      $(datum).prop("disabled", true);
+    });
     state.toggler = window.setInterval(function(){
       animate();
     }, 5);
@@ -32,28 +34,41 @@ var eachSlide = function(){
     break;
 
     case 2:
-    showStops();
+    $('button#prev').show();
     $('#formRadius').show();
     $('#formNumber').hide();
+    state.popup.remove();
+    setVisibility(['stops', 'routes']);
+    map.setCenter([-75.16523938026528,40.02164677314693]);
+    map.setZoom(10.8);
+    // Create a popup, but don't add it to the map yet.
+    state.popup = new mapboxgl.Popup();
+    showStops();
+
 
     break;
     case 3:
+
     checkRadius();
     $('#formRadius').show();
     $('#formNumber').hide();
-
     getRack();
     break;
-    case 4:
-    $('#formRadius').show();
-    $('#formNumber').hide();
 
+    case 4:
+    $('button#next').show();
+    $('#formRadius').hide();
+    $('#formNumber').hide();
     checkRadius();
     getBikeshare();
     break;
+
     case 5:
+    $('button#next').hide();
     $('#formRadius').hide();
     $('#formNumber').show();
+    setVisibility(['routes', 'stops','connectedLine','clickPoint','nearestPoint']);
+
     map.on('click', function(e) {
       state.clickPoint = turf.point([e.lngLat.lng,e.lngLat.lat]);
       findNear();
@@ -120,12 +135,7 @@ var animate = function(){
 
 //Slide Two
 var showStops = function(){
-  state.popup.remove();
-  setVisibility(['stops', 'routes']);
-  map.setCenter([-75.16523938026528,40.02164677314693]);
-  map.setZoom(10.8);
-  // Create a popup, but don't add it to the map yet.
-  state.popup = new mapboxgl.Popup();
+
   map.on('mousemove', function(e) {
     var features = map.queryRenderedFeatures(e.point, { layers: ['stops'] });
     // Change the cursor style as a UI indicator.
@@ -136,8 +146,7 @@ var showStops = function(){
     }
 
     var feature = features[0];
-    // Populate the popup and set its coordinates
-    // based on the feature found.
+    // Populate the popup and set its coordinates based on the feature found.
     state.popup.setLngLat(feature.geometry.coordinates)
     .setHTML(feature.properties.name)
     .addTo(map);
@@ -185,7 +194,6 @@ var getBikeshare = function(){
 
 //Slide Five: Find nearest stops
 var findNear = function(){
-  setVisibility(['routes', 'stops','connectedLine','clickPoint','nearestPoint']);
 
   state.nearestPoint = [];
   state.nearNumber = ((+$('#nearNumber').val() > 0) ? (+$('#nearNumber').val()) : 1).toFixed(0);

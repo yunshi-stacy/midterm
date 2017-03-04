@@ -2,3 +2,7 @@
 #map {
   height:60rem;
 }
+.row.clearfix#buttonGroup {
+    position: absolute;
+    bottom: 6rem;
+}
