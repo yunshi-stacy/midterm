@@ -12,7 +12,6 @@ var clickPreviousButton = function() {
     state.slideNumber = state.slideNumber;
   } else {
     state.slideNumber -= 1;
-    //console.log(state.slideNumber);
   }
 };
 
@@ -29,24 +28,27 @@ var eachSlide = function(){
     state.toggler = window.setInterval(function(){
       animate();
     }, 5);
+    $('#formRadius p.alert').remove();
     $('#formRadius').hide();
     $('#formNumber').hide();
     break;
 
     case 2:
     $('button#prev').show();
+    $('#formRadius p.alert').remove();
     $('#formRadius').show();
+
     $('#formNumber').hide();
     state.popup.remove();
     setVisibility(['stops', 'routes']);
     map.setCenter([-75.16523938026528,40.02164677314693]);
     map.setZoom(10.8);
-    // Create a popup, but don't add it to the map yet.
     state.popup = new mapboxgl.Popup();
-    showStops();
-
-
+    map.on('mousemove', function(e){
+      showStops(e);
+    });
     break;
+
     case 3:
 
     checkRadius();
@@ -57,7 +59,7 @@ var eachSlide = function(){
 
     case 4:
     $('button#next').show();
-    $('#formRadius').hide();
+    $('#formRadius').show();
     $('#formNumber').hide();
     checkRadius();
     getBikeshare();
@@ -65,13 +67,12 @@ var eachSlide = function(){
 
     case 5:
     $('button#next').hide();
+    $('#formRadius p.alert').remove();
     $('#formRadius').hide();
     $('#formNumber').show();
     setVisibility(['routes', 'stops','connectedLine','clickPoint','nearestPoint']);
-
     map.on('click', function(e) {
-      state.clickPoint = turf.point([e.lngLat.lng,e.lngLat.lat]);
-      findNear();
+      findNear(e);
     });
     break;
     default:
@@ -82,12 +83,13 @@ var checkRadius = function(){
   state.searchRadius = ((+$('#searchRadius').val() > 0) ? (+$('#searchRadius').val()) : 0.25).toFixed(2);
   $('#searchRadius').val(state.searchRadius);
   if(state.searchRadius > 1.5){
-    $('#formRadius').append("<p class='alert'>Alert!!! Tons of bikerack locations are coming! We will use the default 0.25 mile here.</p>");
+    if ($('#formRadius p.alert').length === 0){
+      $('#formRadius').append("<p class='alert'>Alert!!! Tons of bikerack locations are coming! We will use the default 0.25 mile here.</p>");
+    }
     $('#searchRadius').val(0.25);
     state.searchRadius = 0.25;
   }
 };
-
 // map display
 var setVisibility = function(poiArray){
   _.each(
@@ -102,7 +104,6 @@ var setVisibility = function(poiArray){
       map.setLayoutProperty(datum, 'visibility', 'visible');
     }
   });
-
 };
 
 
@@ -134,23 +135,20 @@ var animate = function(){
 };
 
 //Slide Two
-var showStops = function(){
+var showStops = function(e) {
+  var features = map.queryRenderedFeatures(e.point, { layers: ['stops'] });
+  // Change the cursor style as a UI indicator.
+  map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+  if (!features.length) {
+    state.popup.remove();
+    return;
+  }
 
-  map.on('mousemove', function(e) {
-    var features = map.queryRenderedFeatures(e.point, { layers: ['stops'] });
-    // Change the cursor style as a UI indicator.
-    map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
-    if (!features.length) {
-      state.popup.remove();
-      return;
-    }
-
-    var feature = features[0];
-    // Populate the popup and set its coordinates based on the feature found.
-    state.popup.setLngLat(feature.geometry.coordinates)
-    .setHTML(feature.properties.name)
-    .addTo(map);
-  });
+  var feature = features[0];
+  // Populate the popup and set its coordinates based on the feature found.
+  state.popup.setLngLat(feature.geometry.coordinates)
+  .setHTML(feature.properties.name)
+  .addTo(map);
 };
 
 // Slide Three
@@ -193,13 +191,15 @@ var getBikeshare = function(){
 };
 
 //Slide Five: Find nearest stops
-var findNear = function(){
-
+var findNear = function(e){
+  state.clickPoint = turf.point([e.lngLat.lng,e.lngLat.lat]);
   state.nearestPoint = [];
   state.nearNumber = ((+$('#nearNumber').val() > 0) ? (+$('#nearNumber').val()) : 1).toFixed(0);
   if (state.nearNumber > state.stops.features.length) {
     state.nearNumber = state.stops.features.length;
-    $('#formNumber').append("<p class='alert'>This number exceeds the total number of the bus stops. We will use the total number " + state.stops.features.length + " here.</p>");
+    if ($('#formNumber p.alert').length === 0){
+      $('#formNumber').append("<p class='alert'>This number exceeds the total number of the bus stops. We will use the total number " + state.stops.features.length + " here.</p>");
+    }
     $('#nearNumber').val(state.nearNumber);
   }
 

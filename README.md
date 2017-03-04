@@ -1,39 +1,92 @@
-# Midterm: Story Map
+# Assignment: Preparing for Midterm
 
-## Project Outline
+## Introduction
 
-The midterm is due on March 6. For your midterm project, you will create a story map application for a dataset
-of your choosing. A story map tells a story through several slides, each slide
-combining text and data. The user is able to move forward and backwards through
-the slides by clicking on next and previous buttons.
+For your [midterm project](https://github.com/CPLN690-MUSA610/midterm), you will
+create a story map application. The midterm is due on March 6. The assignment for
+Week 6 will have you gather data and think about functions in preparation for
+the midterm. You are also welcome to get started on writing the midterm if you
+want to get ahead.
 
-## Requirements
+## Task 1: Prepare Geographic Data
 
-- Your story map should have at least five slides
-- Your story map should have next and previous buttons
-- On the first slide of your story map, the previous button should be hidden
-- On the last slide of your story map, the next button should be hidden
-- The application should be structured in a way where clicking on the next and
-previous buttons will replace the data on the map and the text in the sidebar
-with the next or previous content (in other words, you are not building five
-different maps with different text and data—you are building one map in which
-the content changes based on user input)
-- At least one slide should change the zoom level or center of the map; see
-fitBounds, setView, setZoom, and [related functions](http://leafletjs.com/reference.html#map-set-methods)
+Think about what data you want to tell a story about. You can choose a dataset
+from any of the following sources:
 
-## Getting Started
+- Use data you've been working with for another class
+- Find data from an open data repository (see [third party data repository](https://github.com/CPLN690-MUSA610/resources/blob/master/datasources.md)
+for a few potential sources)
+- Create your own dataset (check out [geojson.io](http://geojson.io))
 
-The midterm should be a new repository that you create on your personal github
-account. Create a new repository on GitHub.com and then clone it to your local
-machine using GitHub Desktop.
+### Data Requirements
 
-## Prototype
+- At least fifteen data points
+- At least one property that can be used to filter the data and color the data
+- GeoJSON format
+- Points, line, and polygon are all fine
+- Data should be real stuff (like, don't create your own dataset with fictional
+locations)
 
-To see a visual representation of how the story map should work, take a look 
-at this [clickable prototype](https://marvelapp.com/bf2c9h) that uses 
-[Marvel](http://marvelapp.com). Please note that this prototype is only meant 
-to represent the functionality of the story map. Feel free to use your own
-layout, color, and other styles, as long as the functionality is the same.
-Your story map will use a different dataset.
+## Task 2: Think About Slide Data
 
-Alternatively, see [individual screenshots](/images/).
+Your story will have multiple slides, each with a title, some additional text,
+and geographic data. It might also need to contain information about how you will
+filter or style the data for that particular slide. This kind of structure is
+another type of data.
+
+How will you represent this data that is about the slides? In slideModel.js,
+write a brief example that shows what the data for one slide might look like.
+Think about how it will be stored and read in Javascript (arrays, objects, etc.).
+
+## Task 3: Write Function Signatures
+
+This midterm project might be the largest Javascript application you have
+written so far. An exciting milestone for sure. Since it is a larger
+application, it might be helpful to step back and think about the project before
+starting to write code.
+
+In midtermFunctions.js, write short descriptions of the functions that will make
+up your application. You don't need to write any of the code inside the functions
+(yet) — just think about what the functions will do, what parameters you will
+pass to them, and what they will return.
+
+Example 1: Let's say we want to take a first and last name and return a single
+string containing both first and last name.
+```javascript
+// take two strings and return them concatenated together
+var combineNames = ???
+```
+
+Example 2: Let's take NO arguments and return an array of values.
+```javascript
+// This function should return an array
+var produceArray = ???
+```
+
+Example 3: Let's take a number and an array and return nothing. Let's go
+a bit further and write out some of the parts of the function we already
+know.
+```javascript
+// This function takes a number (n) and an array and logs the array n times
+var nValuesLogged = function(n: number, values: array) {};
+```
+
+Try this as an exercise in imagining the higher level structure of your
+code. We're not writing javascript so much as outlining how our
+javascript will be written. Try to describe your functions in terms of
+the types of things you expect to put in and the types of things you
+expect to get out.
+1. number
+2. string
+3. array
+4. object
+
+Give any arguments passed into functions useful names. If no
+arguments are passed in, explain what the function does in comment form.
+Take a look at the example project this week for an idea about how you
+might write your comments.
+
+## Task 4: Write a Basic Application
+
+Write the three specified functions in basicApplication.js. Test them out by opening
+basicApplication.html.

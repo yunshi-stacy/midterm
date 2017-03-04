@@ -24,21 +24,19 @@ var state = {
   'nearNumber': 0,
   'layerNames': ['routes', 'connectedLine', 'racks', 'bikeshare', 'stops', 'animatePoint', 'clickPoint', 'nearestPoint', 'bufferZone'],
   'msg': {
-    "0": "Guess which one is the longest bus route in Philly? <br><br>Click 'next' to continue.",
+    "0": "Guess which one is the longest bus route in Philly? <br><br><em style = 'font-size: 1.5rem'>Click 'next' to continue.</em>",
     "1": 'Rumors say that <strong>THIS</strong> is the longest bus route in Philly.',
     "2": "Move your mouse to each station and get the stop name.<br><br><em>Type a distance to see if there is any bike racks within this distance from each stops.</em>",
     "3": 'Do you find your favorite bike racks location?<br><br><em>Please type a distance again or remain the same to see the Indigo bikeshare stations within that distance.</em>',
     "4": 'Similar, but now we get the Indigo bikeshare stations instead.',
-    "5": 'Want to know the average distance of the nearest No.23 bus stops near you? <br>- Write the number of bus stops you wan to include! <br>- Click on the map!'
+    "5": "Want to know the average distance of the nearest No.23 bus stops near you? <br><br><em style = 'font-size: 1.5rem'>- Write the number of bus stops you wan to include! <br>- Click on the map!</em>"
   }
 };
 
 
 
 $("#msg").html(state.msg[state.slideNumber]);
-
 $('button#prev').hide();
-
 $('#formRadius').hide();
 $('#formNumber').hide();
 
@@ -47,7 +45,6 @@ $.ajax('https://gist.githubusercontent.com/yunshi-stacy/a446c0ddc8ba0c1bfa149dcc
     stopsTemp = JSON.parse(datum);
     var stopsArray = [];
     _.each(stopsTemp, function(datum){
-
       var pt = turf.point([datum.lng,datum.lat], {"name": datum.stopname});
       stopsArray.push(pt);
     });
