@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<!-- CSS Imports -->
+	<!-- Bootstrap Imports -->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Latest compiled and minified JavaScript -->
+	<!-- Import jquery befor the bootstrap -->
+	<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js'></script>
+	<script src='https://api.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.css' rel='stylesheet' />
+	<script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+</head>
+<body>
+	<!-- Start HTML -->
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				<div class="page-header">
+					<h1>
+						So long, 23 - the <em><strong>BUSIEST</strong></em> and latest bus route <small>Philadelphia</small>
+					</h1>
+					<grammarly>
+						<div class="_e725ae-textarea_btn _e725ae-not_focused">
+							<div class="_e725ae-transform_wrap">
+								<div class="_e725ae-status">
+								</div>
+							</div>
+						</div>
+					</grammarly>
+				</div>
+			</div>
+		</div>
+		<div class="row clearfix">
+			<div class="col-md-3 column">
+				<h3>
+					Bus Route 23
+				</h3>
+				<p id = "msg" style="font-size: larger"></p>
+				<br>
+				<form class="navbar-form navbar-left" role="search" id="formRadius">
+					<p style="font-size: 1.3rem">Search Radius: <br><em style="font-size: smaller">(Unit: Mile)</em></p>
+					<div class="form-group">
+						<input type="number" class="form-control" id="searchRadius" value="0.25"/>
+					</div>
+				</form>
+
+				<form class="navbar-form navbar-left" role="search" id="formNumber">
+					<p style="font-size: 1.3rem">Number of the Nearest Stops: </p>
+					<div class="form-group">
+						<input type="number" class="form-control" id="nearNumber" value="1"/>
+					</div>
+				</form>
+
+				<div class="btn-group btn-group-md" style="margin-top: 5rem">
+					<button class="btn btn-default" type="button" id='prev'>Prev</button><button class="btn btn-default" type="button" id='next'>Next</button>
+				</div>
+			</div>
+			<div class="col-md-9 column">
+
+				<div id='map'></div>
+
+			</div>
+		</div>
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				<blockquote>
+					<small><cite>Yun Shi, Feb. 2017</cite></small>
+				</blockquote>
+				<grammarly>
+					<div class="_e725ae-textarea_btn _e725ae-not_focused">
+						<div class="_e725ae-transform_wrap">
+							<div class="_e725ae-status">
+							</div>
+						</div>
+					</div>
+				</grammarly>
+			</div>
+		</div>
+	</div>
+	<!-- End HTML -->
+	<!-- Start Javascript Imports -->
+	<link rel="stylesheet" href="css/style.css" />
+	<script src="state.js"></script>
+	<script src="function.js"></script>
+	<script src="slideModel.js"></script>
+	<!-- End Javascript Imports -->
+
+</body>
+</html>
